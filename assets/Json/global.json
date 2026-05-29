@@ -1,0 +1,129 @@
+{
+    "employee_roles": ["General Staff","Salesperson","Delivery Person","Driver","Storekeeper","Warehouse Manager","Accountant","Cashier","Manager","Data Entry Operator"],
+    "employee_task_duration_types": [
+        {"name": "Single Date Tasks (For e.g. Tasks for Today's or Tomorrow's Date).", "value":"single_day"},
+        {"name": "Datewise Tasks (For e.g. Tasks for Date from 1 January to 31 January).", "value":"multi_day"},
+        {"name": "Weekdays Tasks (For e.g. Tasks for Every Sunday to Every Saturday).", "value":"week_days_wise"}
+    ],
+    "employee_tasks_types" : [
+        {"name":"Visit Location For Marketing", "value":"marketing_location"},
+        {"name":"Visit Customer/s", "value":"visit_customers"},
+        {"name":"Visit Vendor/s", "value":"visit_vendors"},
+        {"name":"Deliver Order", "value":"order_delivery"},
+        {"name":"Other", "value":"other"}
+    ],
+    "weekDays": ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "months": [
+        { "name": "January", "value": 1, "days": 31 },
+        { "name": "February", "value": 2, "days": 28 },
+        { "name": "March", "value": 3, "days": 31 },
+        { "name": "April", "value": 4, "days": 30 },
+        { "name": "May", "value": 5, "days": 31 },
+        { "name": "June", "value": 6, "days": 30 },
+        { "name": "July", "value": 7, "days": 31 },
+        { "name": "August", "value": 8, "days": 31 },
+        { "name": "September", "value": 9, "days": 30 },
+        { "name": "October", "value": 10, "days": 31 },
+        { "name": "November", "value": 11, "days": 30 },
+        { "name": "December", "value": 12, "days": 31 }
+    ],
+    "invoice_no_seperators": [
+        {"name": "Slash (/)", "value": "/"},
+        {"name": "Hyphen (-)", "value": "-"},
+        {"name": "Underscore (_)", "value": "_"},
+        {"name": "Dot (.)", "value": "."}
+    ],
+    "default_sale_invoice_settings": {
+        "invoice_no_prefix": "IN",
+        "seperator": "/",
+        "reset_bill_count_every_financial_year": true,
+        "financial_year": {
+            "start_date": 1,
+            "start_month": 4,
+            "end_date": 31,
+            "end_month": 3
+        },
+        "bill_format": {
+            "ask_everytime": true,
+            "bill_format_id": ""
+        },
+        "bank_details": {
+            "name": "Unavailable",
+            "account_number": "Unavailable",
+            "ifsc": "Unavailable"
+        }
+    },
+    "quantity_types": {
+        "Packed":{
+            "allowed_types": [
+                {
+                    "unit_id": "box",
+                    "name": {"singular":"Box", "plural": "Boxes"},
+                    "in_short":{"singular": "Box", "plural": "Boxes"},
+                    "have_subtypes": true,
+                    "sub_types": [{"id":"pc", "per":null}],
+                    "have_supertypes": false
+                },
+                {
+                    "unit_id": "pc", 
+                    "name": {"singular":"Piece", "plural": "Pieces"}, 
+                    "in_short":{"singular": "Pc", "plural": "Pcs"}, 
+                    "have_subtypes": false,
+                    "have_supertypes": true,
+                    "super_types": [{"id":"box", "per":null}]
+                }
+            ]
+        },
+        "Loose":{
+            "Solid":{
+                "allowed_types": [
+                    {
+                        "unit_id": "qt",
+                        "name": {"singular":"Quintal", "plural": "Quintals"},
+                        "in_short":{"singular": "Qtl", "plural": "Qtls"},
+                        "have_subtypes": true,
+                        "sub_types": [ { "id": "kg", "per": 100 }, { "id": "gm", "per": 100000 } ],
+                        "have_supertypes": false
+                    },
+                    {
+                        "unit_id":"kg", 
+                        "name": {"singular":"Kilogram", "plural": "Kilograms"}, 
+                        "in_short":{"singular": "Kg", "plural": "Kgs"}, 
+                        "have_subtypes": true,
+                        "sub_types": [ { "id": "gm", "per": 1000 } ],
+                        "have_supertypes": true,
+                        "super_types": [{"id":"qt", "per":0.01}]
+                    },
+                    {
+                        "unit_id":"gm", 
+                        "name": {"singular":"Gram", "plural": "Grams"}, 
+                        "in_short":{"singular": "Gm", "plural": "Gms"}, 
+                        "have_subtypes": false,
+                        "have_supertypes": true,
+                        "super_types": [{"id":"kg", "per":0.001}, {"id":"qt", "per":0.00001}]
+                    }
+                ]
+            },
+            "Liquid": {
+                "allowed_types": [
+                    {
+                        "unit_id":"lt", 
+                        "name": {"singular":"Liter", "plural": "Liters"},
+                        "in_short":{"singular": "L", "plural": "L"}, 
+                        "have_subtypes": true,
+                        "sub_types": [ { "id": "ml", "per": 1000 } ],
+                        "have_supertypes": false
+                    },
+                    {
+                        "unit_id":"ml", 
+                        "name": {"singular":"Milliliter", "plural": "Milliliters"}, 
+                        "in_short":{"singular": "ML", "plural": "ML"}, 
+                        "have_subtypes": false,
+                        "have_supertypes": true,
+                        "super_types": [{"id":"lt", "per":0.001}]
+                    }
+                ]
+            }
+        }
+    }
+}
